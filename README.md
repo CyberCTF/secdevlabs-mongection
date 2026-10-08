@@ -14,7 +14,7 @@ the vendored app folder (see [UPSTREAM.md](UPSTREAM.md)).
 
 ```bash
 isoloom generate
-isoloom up docker
+isoloom run docker
 ```
 
 Then open http://localhost:10001/, register at `/register.html` and log in at `/login.html`. The same spec runs as Docker on a local VM (`docker-vm`), on a cloud VM
