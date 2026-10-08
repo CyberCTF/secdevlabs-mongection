@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# Mongection (secDevLabs, by Globo.com) as an Isoloom spec: a Node.js login page with a NoSQL
+# injection, vendored unchanged in build/server/app/ (the app folder
+# owasp-top10-2021-apps/a3/mongection of secDevLabs), built by an overlay of upstream's
+# Dockerfile, and its MongoDB machine (the app connects to the host name `mongo`).
+# `isoloom generate`, then `isoloom up docker`.
+version: 1
+name: secdevlabs-mongection
+
+networks:
+  lab: { cidr: 10.60.97.0/24, internet: false }
+
+machines:
+  mongo:
+    networks: { lab: 20 }
+    services: [{ port: 27017, name: mongodb }]
+    resources: { cpus: 1, memory_mb: 512 }
+    volumes: { data: /data/db }
+    docker:
+      build: build/mongo
+
+  server:
+    networks: { lab: 10 }
+    services: [{ port: 10001, name: web, http: true, publish: 10001 }]
+    resources: { cpus: 1, memory_mb: 512 }
+    depends_on: [mongo]
+    docker:
+      build: build/server
+
+checks:
+  - name: the home page answers
+    http: http://server:10001/
+    wait: 180
+  - name: a user registers and logs in with JSON
+    script: checks/login.sh
+    wait: 60
+
+message: |
+  Mongection answers at http://localhost:{{ machines.server.services.0.publish }}/. The login
+  posts JSON straight to a MongoDB query: what if a field is not a string?

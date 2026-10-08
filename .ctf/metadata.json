@@ -1,0 +1,14 @@
+{
+  "title": "secDevLabs Mongection",
+  "description": "A Node.js login system backed by MongoDB with register and login routes. The login hands the posted JSON fields to a MongoDB query as they are.",
+  "question": "Log in without knowing any password by injecting a MongoDB query operator, and read the stored user records.",
+  "category": "WEB",
+  "difficulty": 2,
+  "evidence_kind": "SECRET",
+  "capabilities": [
+    "nosql-injection",
+    "injection",
+    "authentication-bypass",
+    "mongodb"
+  ]
+}
