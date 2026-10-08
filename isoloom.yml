@@ -3,7 +3,7 @@
 # injection, vendored unchanged in build/server/app/ (the app folder
 # owasp-top10-2021-apps/a3/mongection of secDevLabs), built by an overlay of upstream's
 # Dockerfile, and its MongoDB machine (the app connects to the host name `mongo`).
-# `isoloom generate`, then `isoloom up docker`.
+# `isoloom generate`, then `isoloom run docker`.
 version: 1
 name: secdevlabs-mongection
 
