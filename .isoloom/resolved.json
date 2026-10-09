@@ -135,7 +135,8 @@
       "vagrant": "needs `vm:` on mongo, server",
       "proxmox": "needs `vm:` on mongo, server",
       "cloud-vm": "needs `vm:` on mongo, server",
-      "external": "needs `external:` on mongo, server"
+      "external": "needs `external:` on mongo, server",
+      "cloud-services": "left out by `targets:`"
     }
   },
   "checks": {
