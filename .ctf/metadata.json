@@ -4,11 +4,5 @@
   "question": "Log in without knowing any password by injecting a MongoDB query operator, and read the stored user records.",
   "category": "WEB",
   "difficulty": 2,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "nosql-injection",
-    "injection",
-    "authentication-bypass",
-    "mongodb"
-  ]
+  "evidence_kind": "SECRET"
 }
